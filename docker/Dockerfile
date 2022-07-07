@@ -42,11 +42,11 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     rosdep update && \
     rm -rf /var/lib/apt/lists/*
 
-ARG USER=raaicv
+ARG USER=rdls
 ARG UID=1000
 ARG GID=1000
 # default password
-ARG PW=sirius
+ARG PW=sirius2022
 
 RUN useradd -m ${USER} --uid=${UID} -s /bin/bash \
     && echo "${USER}:${PW}" | chpasswd \
@@ -59,3 +59,5 @@ WORKDIR /home/${USER}
 RUN cd /home/${USER} && mkdir -p catkin_ws/src && chown -R ${UID}:${GID} ./
 
 EXPOSE 22
+
+#USER ${USER}
